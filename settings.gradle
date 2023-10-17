@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "MyFirst"
-include ':modules:app'
-include ':mylibrary'
+include ':app'
+
