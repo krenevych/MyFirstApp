@@ -32,20 +32,17 @@ class MainActivity : AppCompatActivity() {
 //        }
 //    }
 
-    private val clickListener: OnClickListener = object : OnClickListener {
-        override fun onClick(view: View?) {
-            view?.let {
-                if (it is Button) {
-                    val toast = Toast.makeText(this@MainActivity, it.text.toString(), Toast.LENGTH_SHORT)
-                    toast.show()
-                }
-                if (it is TextView) {
-                    val toast = Toast.makeText(this@MainActivity, it.text.toString(), Toast.LENGTH_SHORT)
-                    toast.show()
-                }
+    private val clickListener: OnClickListener = OnClickListener { view ->
+        view?.let {
+            if (it is Button) {
+                val toast = Toast.makeText(this@MainActivity, it.text.toString(), Toast.LENGTH_SHORT)
+                toast.show()
+            }
+            if (it is TextView) {
+                val toast = Toast.makeText(this@MainActivity, it.text.toString(), Toast.LENGTH_SHORT)
+                toast.show()
             }
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
