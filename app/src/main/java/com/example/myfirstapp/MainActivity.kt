@@ -3,6 +3,7 @@ package com.example.myfirstapp
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
@@ -55,20 +56,21 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
         button1.setOnClickListener(this)
         button2.setOnClickListener(this)
-        textView.setOnClickListener(this)
 
     }
 
     override fun onClick(view: View?) {
         view?.let {
             if (it is Button) {
-                val toast = Toast.makeText(this@MainActivity, it.text.toString(), Toast.LENGTH_SHORT)
-                toast.show()
-            }
-            if (it is TextView) {
-                val toast = Toast.makeText(this@MainActivity, it.text.toString(), Toast.LENGTH_SHORT)
-                toast.show()
+                textView.text = it.text.toString()
+//                Log.d(TAG, "Text ${it.text} setup into TextView")
+                Log.e(TAG, "Text ${it.text} setup into TextView")
             }
         }
     }
+
+    companion object {
+        private val TAG = "XXXXX"
+    }
+
 }
