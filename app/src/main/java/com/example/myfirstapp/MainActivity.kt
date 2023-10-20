@@ -2,9 +2,11 @@ package com.example.myfirstapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,7 +22,14 @@ class MainActivity : AppCompatActivity() {
         textView = findViewById(R.id.textView)
         editText = findViewById(R.id.editTextText)
 
-        button.setOnClickListener {
+        button.setOnClickListener { view: View? ->
+            view?.let{
+                if (it is Button){
+                    val toast = Toast.makeText(this, it.text.toString(), Toast.LENGTH_SHORT)
+                    toast.show()
+                }
+            }
+
             val name = editText.text.toString()
             textView.text = "Hello, $name!"
         }
