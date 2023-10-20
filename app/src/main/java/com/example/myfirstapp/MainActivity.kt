@@ -1,8 +1,10 @@
 package com.example.myfirstapp
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.View.OnClickListener
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -15,7 +17,22 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private inner class CustomOnClickListener : View.OnClickListener {
+//    private class CustomOnClickListener(val context: Context) : View.OnClickListener {
+//        override fun onClick(view: View?) {
+//            view?.let {
+//                if (it is Button) {
+//                    val toast = Toast.makeText(context, it.text.toString(), Toast.LENGTH_SHORT)
+//                    toast.show()
+//                }
+//                if (it is TextView) {
+//                    val toast = Toast.makeText(context, it.text.toString(), Toast.LENGTH_SHORT)
+//                    toast.show()
+//                }
+//            }
+//        }
+//    }
+
+    private val clickListener: OnClickListener = object : OnClickListener {
         override fun onClick(view: View?) {
             view?.let {
                 if (it is Button) {
@@ -28,9 +45,8 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
 
-    private val clickListener: View.OnClickListener = CustomOnClickListener()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
