@@ -15,11 +15,23 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/cat_first" />
 
-    <Button
-        android:id="@+id/button1"
+    <CheckBox
+        android:id="@+id/checkBoxCat1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Change picture" />
+        android:text="Cat 1" />
+
+    <CheckBox
+        android:id="@+id/checkBoxCat2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cat 2" />
+
+    <CheckBox
+        android:id="@+id/checkBoxCat3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cat 3" />
 
 
 </LinearLayout>
