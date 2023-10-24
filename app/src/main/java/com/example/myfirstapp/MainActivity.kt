@@ -1,20 +1,18 @@
 package com.example.myfirstapp
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.Spinner
+import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
     private lateinit var imageView: ImageView
-//    https://developer.android.com/develop/ui/views/components/spinner
-    private lateinit var spinner: Spinner
-
+    private lateinit var catsList: ListView
 
     private val images = listOf(
         R.drawable.cat_first,
@@ -22,35 +20,88 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         R.drawable.cat_third,
         R.drawable.cat_4,
         R.drawable.cat_5,
+        R.drawable.cat_first,
+        R.drawable.cat_second,
+        R.drawable.cat_third,
+        R.drawable.cat_4,
+        R.drawable.cat_5,
+        R.drawable.cat_first,
+        R.drawable.cat_second,
+        R.drawable.cat_third,
+        R.drawable.cat_4,
+        R.drawable.cat_5,
+        R.drawable.cat_first,
+        R.drawable.cat_second,
+        R.drawable.cat_third,
+        R.drawable.cat_4,
+        R.drawable.cat_5,
+        R.drawable.cat_first,
+        R.drawable.cat_second,
+        R.drawable.cat_third,
+        R.drawable.cat_4,
+        R.drawable.cat_5,
+        R.drawable.cat_first,
+        R.drawable.cat_second,
+        R.drawable.cat_third,
+        R.drawable.cat_4,
+        R.drawable.cat_5,
     )
 
+    private val listItems = listOf(
+        "Cat first",
+        "Cat second",
+        "Cat third",
+        "Cat 4",
+        "Cat 5",
+        "Cat first",
+        "Cat second",
+        "Cat third",
+        "Cat 4",
+        "Cat 5",
+        "Cat first",
+        "Cat second",
+        "Cat third",
+        "Cat 4",
+        "Cat 5",
+        "Cat first",
+        "Cat second",
+        "Cat third",
+        "Cat 4",
+        "Cat 5",
+        "Cat first",
+        "Cat second",
+        "Cat third",
+        "Cat 4",
+        "Cat 5",
+        "Cat first",
+        "Cat second",
+        "Cat third",
+        "Cat 4",
+        "Cat 5",
+        )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         imageView = findViewById(R.id.imageView)
-        spinner = findViewById(R.id.catSpinner)
-        val spinnerAdapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.cats,
-            android.R.layout.simple_spinner_item
-        )
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = spinnerAdapter
-        spinner.onItemSelectedListener = this
+
+        catsList = findViewById(R.id.catsList)
+        val adapter = ArrayAdapter(this,
+            android.R.layout.simple_list_item_1,
+            listItems)
+        catsList.adapter = adapter
+        catsList.onItemClickListener = this
+
     }
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//        val item = parent?.adapter?.getItem(position)
+
+    override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val item = parent?.getItemAtPosition(position)
-        Log.d("XXXX", "selected $item")
-        if (item != null){
+        if (item != null) {
             imageView.setImageResource(images[position])
         }
-    }
-
-    override fun onNothingSelected(parent: AdapterView<*>?) {
+        Toast.makeText(this, "Selected item $item", Toast.LENGTH_SHORT).show()
     }
 
 
