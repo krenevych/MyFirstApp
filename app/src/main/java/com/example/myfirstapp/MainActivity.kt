@@ -1,76 +1,32 @@
 package com.example.myfirstapp
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.view.View.OnClickListener
 import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity(), OnClickListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var button1: Button
-    private lateinit var button2: Button
-    private lateinit var textView: TextView
-
-
-
-//    private class CustomOnClickListener(val context: Context) : View.OnClickListener {
-//        override fun onClick(view: View?) {
-//            view?.let {
-//                if (it is Button) {
-//                    val toast = Toast.makeText(context, it.text.toString(), Toast.LENGTH_SHORT)
-//                    toast.show()
-//                }
-//                if (it is TextView) {
-//                    val toast = Toast.makeText(context, it.text.toString(), Toast.LENGTH_SHORT)
-//                    toast.show()
-//                }
-//            }
-//        }
-//    }
-
-//    private val clickListener: OnClickListener = OnClickListener { view ->
-//        view?.let {
-//            if (it is Button) {
-//                val toast = Toast.makeText(this@MainActivity, it.text.toString(), Toast.LENGTH_SHORT)
-//                toast.show()
-//            }
-//            if (it is TextView) {
-//                val toast = Toast.makeText(this@MainActivity, it.text.toString(), Toast.LENGTH_SHORT)
-//                toast.show()
-//            }
-//        }
-//    }
+    private lateinit var imageView: ImageView
+    private val images = listOf(
+        R.drawable.cat_first,
+        R.drawable.cat_second,
+        R.drawable.cat_third,
+    )
+    private var curImageIndex = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         button1 = findViewById(R.id.button1)
-        button2 = findViewById(R.id.button2)
-        textView = findViewById(R.id.textView1)
-
-        button1.setOnClickListener(this)
-        button2.setOnClickListener(this)
-
-    }
-
-    override fun onClick(view: View?) {
-        view?.let {
-            if (it is Button) {
-                textView.text = it.text.toString()
-//                Log.d(TAG, "Text ${it.text} setup into TextView")
-                Log.e(TAG, "Text ${it.text} setup into TextView")
-            }
+        imageView = findViewById(R.id.imageView)
+        button1.setOnClickListener {
+            curImageIndex = (curImageIndex + 1) % images.size
+            val imageRes = images[curImageIndex]
+            imageView.setImageResource(imageRes)
         }
-    }
-
-    companion object {
-        private val TAG = "XXXXX"
     }
 
 }
