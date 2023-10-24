@@ -15,10 +15,11 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/cat_first" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/catsList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:listitem="@layout/cat_item" />
 
 
 </LinearLayout>
