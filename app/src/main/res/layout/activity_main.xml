@@ -15,23 +15,31 @@
         android:scaleType="fitCenter"
         app:srcCompat="@drawable/cat_first" />
 
-    <CheckBox
-        android:id="@+id/checkBoxCat1"
+    <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cat 1" />
+        android:layout_height="wrap_content">
 
-    <CheckBox
-        android:id="@+id/checkBoxCat2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cat 2" />
+        <RadioButton
+            android:id="@+id/cat1"
+            android:text="Cat 1"
+            android:checked="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <CheckBox
-        android:id="@+id/checkBoxCat3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cat 3" />
+        <RadioButton
+            android:id="@+id/cat2"
+            android:text="Cat 2"
+             android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/cat3"
+            android:text="Cat 3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RadioGroup>
+
 
 
 </LinearLayout>
