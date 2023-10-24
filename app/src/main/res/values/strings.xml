@@ -2,4 +2,11 @@
     <string name="app_name">MyFirstApp</string>
     <string name="hello_world">Hello Word!</string>
     <string name="hello_mech_mat">Hello Mech-mat</string>
+    <string-array name="cats">
+        <item>Cat first</item>
+        <item>Cat second</item>
+        <item>Cat third</item>
+        <item>Cat 4</item>
+        <item>Cat 5</item>
+    </string-array>
 </resources>
