@@ -1,7 +1,9 @@
 package com.example.myfirstapp
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -67,10 +69,16 @@ class MainActivity : AppCompatActivity() {
         imageView = findViewById(R.id.imageView)
         catsList = findViewById(R.id.catsList)
         catsList.layoutManager = LinearLayoutManager(this)
-        val adapter = CustomAdapter(
-//            this,
-            dataSet)
+        val adapter = CustomAdapter(dataSet).apply {
+            clickListener =
+                CustomAdapter.CatItemClickListener { view, itemData ->
+                    Toast.makeText(this@MainActivity, itemData.name, Toast.LENGTH_SHORT).show()
+                    imageView.setImageResource(itemData.resId)
+                }
+        }
+
         catsList.adapter = adapter
+
     }
 
 

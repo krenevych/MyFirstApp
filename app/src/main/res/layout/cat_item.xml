@@ -20,16 +20,20 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageViewCat"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="10dp"
 
+                app:civ_border_width="2dp"
+                app:civ_border_color="#1230B4"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/cat_second" />
+                app:srcCompat="@drawable/cat_second"
+                />
 
             <TextView
                 android:id="@+id/nameCat"

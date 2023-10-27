@@ -1,6 +1,5 @@
 package com.example.myfirstapp
 
-import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -52,14 +51,23 @@ class CustomAdapter(
                                   position: Int) {
         holder.imageViewCat.setImageResource(dataSet[position].resId)
         holder.textViewCat.text = dataSet[position].name
-        holder.catCardView.setOnClickListener{
-            Toast.makeText(holder.catCardView.context, dataSet[position].name, Toast.LENGTH_SHORT).show()
+//        holder.catCardView.setOnClickListener{
+//            Toast.makeText(holder.catCardView.context, dataSet[position].name, Toast.LENGTH_SHORT).show()
+//        }
+//        holder.catCardView.setOnClickListener(clickListener)
+        holder.catCardView.setOnClickListener {
+            clickListener?.onClick(holder.catCardView, dataSet[position])
         }
 
         Log.d("XXXXX", "onBindViewHolder (${holder.id})")
-
-
     }
 
+//    var clickListener: View.OnClickListener? = null
+
+    fun interface CatItemClickListener {
+        fun onClick(view: View?, itemData: ItemData)
+    }
+
+    var clickListener: CatItemClickListener? = null
 
 }
