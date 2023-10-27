@@ -1,13 +1,20 @@
 package com.example.myfirstapp
 
+import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val dataSet: List<ItemData>):
+class CustomAdapter(
+//    private val context: Context,
+                    private val dataSet: List<ItemData>,
+):
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     /**
@@ -17,12 +24,24 @@ class CustomAdapter(private val dataSet: List<ItemData>):
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val imageViewCat: ImageView = view.findViewById(R.id.imageViewCat)
         val textViewCat: TextView = view.findViewById(R.id.nameCat)
+        val catCardView: CardView = view.findViewById(R.id.catCardView)
+        val id = curId++
+
+        init {
+            Log.d("XXXXX", "ViewHolder id = $id")
+        }
+    }
+
+    companion object {
+        var curId = 0
     }
 
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.cat_item, parent, false)
+
+        Log.d("XXXXX", "onCreateViewHolder")
 
         return ViewHolder(view)
     }
@@ -33,6 +52,13 @@ class CustomAdapter(private val dataSet: List<ItemData>):
                                   position: Int) {
         holder.imageViewCat.setImageResource(dataSet[position].resId)
         holder.textViewCat.text = dataSet[position].name
+        holder.catCardView.setOnClickListener{
+            Toast.makeText(holder.catCardView.context, dataSet[position].name, Toast.LENGTH_SHORT).show()
+        }
+
+        Log.d("XXXXX", "onBindViewHolder (${holder.id})")
+
+
     }
 
 

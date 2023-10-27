@@ -67,7 +67,9 @@ class MainActivity : AppCompatActivity() {
         imageView = findViewById(R.id.imageView)
         catsList = findViewById(R.id.catsList)
         catsList.layoutManager = LinearLayoutManager(this)
-        val adapter = CustomAdapter(dataSet)
+        val adapter = CustomAdapter(
+//            this,
+            dataSet)
         catsList.adapter = adapter
     }
 
